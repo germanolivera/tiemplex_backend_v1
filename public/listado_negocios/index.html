@@ -1,0 +1,54 @@
+<!-- Contenedor de titulo -->
+<div id="titulos"></div>
+<!-- Estoy rederizando una tabla como representación de los datos. -->
+<div id="table-container"></div>
+<script>
+	
+	/*
+		Cargo datos desde la API y los muestro en formato tabla
+		Link: http://localhost:3000/listado_negocios/
+	*/
+
+	fetch("/negocio")
+		.then((res) => res.json())
+		.then((data) => {
+			if (!data.length) return;
+
+			// genero el nombre de mi aplicacion-titulo
+			const misTitulos = document.getElementById("titulos");
+			const titulo_principal = document.createElement("h1");
+			titulo_principal.textContent = "Tiemplex (simplificada) - Mi Aplicación con Node.js y Express";
+			misTitulos.appendChild(titulo_principal);
+
+			// Genero el titulo de la informacion que se muestra
+			const nombre_tabla = document.createElement("h2");
+			nombre_tabla.textContent = "Listado de Negocios";
+			misTitulos.appendChild(nombre_tabla);
+
+			// Genero el contenedor de la tabla que se muestra
+			const container = document.getElementById("table-container");
+
+			// Genero mi etiqueta tabla y le doy algunos estilos básicos
+			const table = document.createElement("table");
+			table.border = 1;
+			table.cellPadding = 6;
+			// encabezados dinámicos
+			const header = table.createTHead().insertRow();
+			Object.keys(data[0]).forEach((key) => {
+				const th = document.createElement("th");
+				th.textContent = key;
+				header.appendChild(th);
+			});
+			// filas
+			const tbody = table.createTBody();
+			data.forEach((item) => {
+				const row = tbody.insertRow();
+				Object.values(item).forEach((val) => {
+					const cell = row.insertCell();
+					cell.textContent = val;
+				});
+			});
+			container.appendChild(table);
+		})
+		.catch((err) => console.error("Error cargando datos:", err));
+</script>

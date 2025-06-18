@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Alta de Negocio</title>
+</head>
+<body>
+  <h1>Alta de Nuevo Negocio</h1>
+  <form id="form-negocio">
+    <label>Nombre:</label><br>
+    <input type="text" id="nombre" required><br>
+
+    <label>Dirección:</label><br>
+    <input type="text" id="direccion" required><br>
+
+    <label>Teléfono:</label><br>
+    <input type="text" id="telefono" required><br>
+
+    <label>Descripción:</label><br>
+    <textarea id="descripcion" required></textarea><br>
+
+    <label>ID Rubro:</label><br>
+    <input type="number" id="id_rubro_negocio" required><br>
+
+    <button type="submit">Crear negocio</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  <script src="crear_negocio.js"></script>
+</body>
+</html>
