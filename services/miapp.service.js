@@ -12,7 +12,7 @@ exports.getAll = async () => {
 };
 
 exports.create = async (data) => {
-	const sql = sqlLoader.load("negocio", "insertNegocio.sql");
+	const sql = sqlLoader.load("negocio", "insertar_negocio.sql");
 	const [result, fields] = await pool.query(sql, [
 		data.nombre,
 		data.direccion,
@@ -20,6 +20,28 @@ exports.create = async (data) => {
 		data.descripcion,
 		data.id_rubro_negocio,
 	]);
-	
+
 	return { id_negocio: result.insertId, ...data };
+};
+
+exports.delete = async (id) => {
+	const sql = sqlLoader.load("negocio", "delete_negocio.sql");
+	// devuelve [result] pero no lo usamos
+	const [result] = await pool.query(sql, [id]);
+	console.log(result); // Para depurar
+};
+
+exports.update = async (id, data) => {
+	const sql = sqlLoader.load("negocio", "update_negocio.sql");
+	const params = [
+		data.nombre,
+		data.direccion,
+		data.telefono,
+		data.descripcion,
+		data.id_perfil_horario_negocio,
+		id,
+	];
+	await pool.query(sql, params);
+	// opcional: devolver el objeto modificado
+	return { id_negocio: +id, ...data };
 };

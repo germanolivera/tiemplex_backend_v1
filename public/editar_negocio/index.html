@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Editar Negocio</title>
+	</head>
+	<body>
+		<h2>Editar Negocio</h2>
+		<form id="form-editar">
+			<label>ID del negocio:</label>
+			<input type="number" id="id_negocio" required /><br /><br />
+
+			<label>Nombre:</label>
+			<input type="text" id="nombre" required /><br /><br />
+
+			<label>Dirección:</label>
+			<input type="text" id="direccion" /><br /><br />
+
+			<label>Teléfono:</label>
+			<input type="text" id="telefono" /><br /><br />
+
+			<label>Descripción:</label><br />
+			<textarea id="descripcion" rows="3"></textarea><br /><br />
+
+			<label>ID Rubro:</label>
+			<input type="number" id="id_perfil_horario_negocio" /><br /><br />
+
+			<button type="submit">Actualizar</button>
+		</form>
+		<div id="resultado"></div>
+
+		<script src="editar_negocio.js"></script>
+	</body>
+</html>

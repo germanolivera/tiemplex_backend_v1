@@ -1,6 +1,6 @@
+const path = require("path");
 require("dotenv").config();
 const express = require("express");
-const path = require("path");
 const cors = require("cors");
 
 // Cargo mis rutas
@@ -13,13 +13,22 @@ app.use(express.json());
 // Sirvo estáticos de /public (index.html, css, js…)
 app.use(express.static(path.join(__dirname, "public")));
 
-/* 
-	Genero un LISTADO DE NEGOCIOS cargados en mi base
-	Link: http://localhost:3000/listado_negocios/
- */
-app.use(express.static(path.join(__dirname, "public", "listado_negocios")));
+// app.use(express.static(path.join(__dirname, "public", "listado_negocios")));
 
-/* End point para listar los negocios */
+// Eliminar negocio
+app.get("/borrar_negocio", (req, res) => {
+	res.sendFile(
+		path.join(__dirname, "public", "borrar_negocio", "eliminar.html")
+	);
+});
+
+app.get("/editar_negocio", (req, res) => {
+	res.sendFile(
+		path.join(__dirname, "public", "editar_negocio", "index.html")
+	);
+});
+
+/* Listar los negocios */
 app.use("/negocio", productRouter);
 
 // Acá uso otra variable de entorno para el puerto

@@ -9,7 +9,7 @@ document.getElementById("form-negocio").addEventListener("submit", function(e) {
         descripcion: document.getElementById("descripcion").value,
         id_rubro_negocio: parseInt(document.getElementById("id_rubro_negocio").value)
     };
-    console.log(negocio); // Llega la info bien
+    // console.log(negocio); // Llega la info bien
     fetch("/negocio", {
         method: "POST",
         headers: {
@@ -19,7 +19,7 @@ document.getElementById("form-negocio").addEventListener("submit", function(e) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log("Negocio creado:", data); // La info llega bien
+        // console.log("Negocio creado(crear_negocio:22):", data); // La info llega bien
         document.getElementById("resultado").innerText = "Negocio creado correctamente! ID: " + data.id_negocio;
     })
     .catch(err => {

@@ -4,5 +4,7 @@ const controller = require('../controllers/miapp.controller');
 
 router.get("/", controller.getAll);
 router.post("/", controller.create);
+router.delete("/:id", controller.delete);
+router.put("/:id", controller.update);
 
 module.exports = router;
