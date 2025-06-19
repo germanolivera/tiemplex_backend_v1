@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Listado de Turnos</title>
+		<style>
+			table {
+				border-collapse: collapse;
+				width: 100%;
+			}
+			th,
+			td {
+				border: 1px solid #ccc;
+				padding: 8px;
+				text-align: left;
+			}
+			th {
+				background: #f4f4f4;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Listado de Turnos</h2>
+		<button id="btn-cargar">Cargar Turnos</button>
+		<table id="tabla-turnos">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Negocio</th>
+					<th>Cliente</th>
+					<th>Empleado</th>
+					<th>Servicio</th>
+					<th>Fecha Turno</th>
+					<th>Hora</th>
+					<th>Estado</th>
+					<th>Solicitado</th>
+					<th>Observaciones</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+
+		<script src="listar_turnos.js"></script>
+	</body>
+</html>
