@@ -4,77 +4,71 @@ const express = require("express");
 const cors = require("cors");
 
 // Cargo mis rutas
-const productRouter = require("./routes/miapp.routes");
+const productRouter = require("./routes/sucursal.routes"); TODO:"Cambiar nombre luego de completar de entrega"
 const turnosRouter = require("./routes/turnos.routes");
+const usuariosRouter = require("./routes/usuarios.routes");
+const serviciosRouter = require("./routes/servicios.routes");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-/* Listar los negocios */
-app.use("/negocio", productRouter);
 
-/* Insertar turno */
+app.use("/sucursal", productRouter);
 app.use("/turnos", turnosRouter);
+app.use("/usuarios", usuariosRouter);
+app.use("/servicios", serviciosRouter);
 
-// Borrar negocio: http://localhost:3000/negocio/borrar_negocio/
-app.get("/borrar_negocio", (req, res) => {
+// Borrar sucursal: http://localhost:3000/sucursal/borrar_sucursal/
+app.get("/borrar_sucursal", (req, res) => {
 	res.sendFile(
-		path.join(__dirname, "public", "negocio", "borrar_negocio", "eliminar.html")
+		path.join(__dirname, "public", "sucursal", "borrar_sucursal", "eliminar.html")
 	);
 });
 
-// Editar negocio: http://localhost:3000/negocio/editar_negocio/
-app.get("/editar_negocio", (req, res) => {
+// Editar sucursal: http://localhost:3000/sucursal/editar_sucursal/
+app.get("/editar_sucursal", (req, res) => {
 	res.sendFile(
-		path.join(__dirname, "public", "negocio", "editar_negocio", "index.html")
+		path.join(__dirname, "public", "sucursal", "editar_sucursal", "index.html")
 	);
 });
 
-// Listado negocio: http://localhost:3000/negocio/listado_negocios/
-app.get("/listado_negocios", (req, res) => {
+// Listado sucursal: http://localhost:3000/sucursal/listado_sucursal/
+app.get("/listado_sucursal", (req, res) => {
 	res.sendFile(
-		path.join(__dirname, "public", "negocio", "listado_negocios", "index.html")
+		path.join(__dirname, "public", "sucursal", "listado_sucursal", "index.html")
 	);
 });
 
-
-// Nuevo negocio: http://localhost:3000/negocio/nuevo_negocio/
-app.get("/nuevo_negocio", (req, res) => {
+// Nuevo sucursal: http://localhost:3000/sucursal/nuevo_sucursal/
+app.get("/nuevo_sucursal", (req, res) => {
 	res.sendFile(
-		path.join(__dirname, "public", "negocio", "nuevo_negocio", "index.html")
+		path.join(__dirname, "public", "sucursal", "nuevo_sucursal", "index.html")
 	);
 });
 
-// Nuevo turno
+// Nuevo turno: http://localhost:3000/turnos/nuevo_turno/
 app.get("/nuevo_turno", (req, res) => {
 	res.sendFile(
 		path.join(__dirname, "public", "turnos", "nuevo_turno", "index.html")
 	);
 });
 
-// Listado de turnos
+// Listado de turnos: http://localhost:3000/turnos/listado_turnos/
 app.get("/listado_turnos", (req, res) => {
 	res.sendFile(
 		path.join(__dirname, "public", "turnos", "listado_turnos", "index.html")
 	);
 });
 
-// Editar turno
+// Editar turno: http://localhost:3000/turnos/editar_turno/
 app.get("/editar", (req, res) => {
 	res.sendFile(
 		path.join(__dirname, "public", "turnos", "editar_turno", "index.html")
 	);
 });
 
-// Eliminar turno
-app.get("/editar", (req, res) => {
-	res.sendFile(
-		path.join(__dirname, "public", "turnos", "eliminar_turno", "index.html")
-	);
-});
-
-// Eliminar turno
+// Eliminar turno: http://localhost:3000/turnos/eliminar_turno/
 app.get("/eliminar_turno", (req, res) => {
 	res.sendFile(
 		path.join(__dirname, "public", "turnos", "eliminar_turno", "index.html")

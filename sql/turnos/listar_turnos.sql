@@ -1,7 +1,7 @@
 -- Recupera todos los turnos con sus datos
 SELECT
     t.id_turno,
-    t.id_negocio,
+    t.id_sucursal,
     t.id_cliente,
     t.id_empleado,
     t.id_servicio,

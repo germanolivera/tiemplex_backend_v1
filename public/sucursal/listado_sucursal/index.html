@@ -3,13 +3,7 @@
 <!-- Estoy rederizando una tabla como representación de los datos. -->
 <div id="table-container"></div>
 <script>
-	
-	/*
-		Cargo datos desde la API y los muestro en formato tabla
-		Link: http://localhost:3000/listado_negocios/
-	*/
-
-	fetch("/negocio")
+	fetch("/sucursal")
 		.then((res) => res.json())
 		.then((data) => {
 			if (!data.length) return;
@@ -17,12 +11,13 @@
 			// genero el nombre de mi aplicacion-titulo
 			const misTitulos = document.getElementById("titulos");
 			const titulo_principal = document.createElement("h1");
-			titulo_principal.textContent = "Tiemplex (simplificada) - Mi Aplicación con Node.js y Express";
+			titulo_principal.textContent =
+				"Tiemplex (simplificada) - Mi Aplicación con Node.js y Express";
 			misTitulos.appendChild(titulo_principal);
 
 			// Genero el titulo de la informacion que se muestra
 			const nombre_tabla = document.createElement("h2");
-			nombre_tabla.textContent = "Listado de Negocios";
+			nombre_tabla.textContent = "Listado de sucursal";
 			misTitulos.appendChild(nombre_tabla);
 
 			// Genero el contenedor de la tabla que se muestra

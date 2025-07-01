@@ -2,14 +2,14 @@ document
 	.getElementById("form-eliminar")
 	.addEventListener("submit", async (e) => {
 		e.preventDefault();
-		const id = document.getElementById("id_negocio").value;
+		const id = document.getElementById("id_sucursal").value;
 		const resultado = document.getElementById("resultado");
 		resultado.textContent = "⏳ Procesando…";
 
 		try {
-			const resp = await fetch(`/negocio/${id}`, { method: "DELETE" });
+			const resp = await fetch(`/sucursal/${id}`, { method: "DELETE" });
 			if (resp.status === 204) {
-				resultado.textContent = "✅ Negocio eliminado correctamente.";
+				resultado.textContent = "✅ sucursal eliminado correctamente.";
 			} else {
 				const { error } = await resp.json();
 				resultado.textContent = `❌ ${error || "No se pudo eliminar"}`;

@@ -20,6 +20,16 @@ exports.getAll = async (req, res) => {
 	}
 };
 
+exports.getAllCompl = async (req, res) => {
+	try {
+		const lista = await service.getAllCompl();
+		res.status(200).json(lista);
+	} catch (err) {
+		console.error("Error en controller.getAllCompl turnos:", err);
+		res.status(500).json({ error: "Error al listar turnos" });
+	}
+};
+
 exports.update = async (req, res) => {
 	const { id } = req.params;
 	try {

@@ -1,10 +1,9 @@
-// El servicio de productos maneja la lógica de negocio relacionada con los productos.
-
 const sqlLoader = require("../utiles/sqlLoader.js");
-const pool = require("../src/config/db");
+const pool = require("../src/config/db.js");
 
 exports.getAll = async () => {
-	const sql = sqlLoader.load("negocio", "listar_negocios.sql");
+	const sql = sqlLoader.load("sucursal", "listar_sucursal.sql");
+	console.log("pase..."); // Datos OK
 	console.log("Ejecutado " + sql); // Consulta OK
 	const [rows] = await pool.query(sql);
 	console.log("Registros:  " + rows.length); // Datos OK
@@ -12,36 +11,36 @@ exports.getAll = async () => {
 };
 
 exports.create = async (data) => {
-	const sql = sqlLoader.load("negocio", "insertar_negocio.sql");
+	const sql = sqlLoader.load("sucursal", "insertar_sucursal.sql");
 	const [result, fields] = await pool.query(sql, [
 		data.nombre,
 		data.direccion,
 		data.telefono,
 		data.descripcion,
-		data.id_rubro_negocio,
+		data.id_rubro_sucursal,
 	]);
 
-	return { id_negocio: result.insertId, ...data };
+	return { id_sucursal: result.insertId, ...data };
 };
 
 exports.delete = async (id) => {
-	const sql = sqlLoader.load("negocio", "delete_negocio.sql");
+	const sql = sqlLoader.load("sucursal", "delete_sucursal.sql");
 	// devuelve [result] pero no lo usamos
 	const [result] = await pool.query(sql, [id]);
 	console.log(result); // Para depurar
 };
 
 exports.update = async (id, data) => {
-	const sql = sqlLoader.load("negocio", "update_negocio.sql");
+	const sql = sqlLoader.load("sucursal", "update_sucursal.sql");
 	const params = [
 		data.nombre,
 		data.direccion,
 		data.telefono,
 		data.descripcion,
-		data.id_perfil_horario_negocio,
+		data.id_perfil_horario_sucursal,
 		id,
 	];
 	await pool.query(sql, params);
 	// opcional: devolver el objeto modificado
-	return { id_negocio: +id, ...data };
+	return { id_sucursal: +id, ...data };
 };

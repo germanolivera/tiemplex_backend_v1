@@ -1,7 +1,7 @@
 -- Inserta un nuevo turno. fecha_solicitud se toma como NOW().
 INSERT INTO
     turnos (
-        id_negocio,
+        id_sucursal,
         id_cliente,
         id_empleado,
         id_servicio,

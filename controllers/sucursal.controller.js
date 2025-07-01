@@ -1,11 +1,11 @@
-// Los controllers contienen la lógica de negocio y se comunican con los servicios para obtener o manipular datos.
-const service = require("../services/miapp.service");
+// Los controllers contienen la lógica de sucursal y se comunican con los servicios para obtener o manipular datos.
+const service = require("../services/sucursal.service");
 
 exports.getAll = async (req, res) => {
 	try {
-		const negocio = await service.getAll();
-		console.log(negocio); // Llega la info OK
-		res.json(negocio);
+		const sucursal = await service.getAll();
+		console.log(sucursal); // Llega la info OK
+		res.json(sucursal);
 	} catch (err) {
 		res.status(500).json({ error: "Error al obtener productos" });
 	}
@@ -18,7 +18,7 @@ exports.create = async (req, res) => {
 		res.status(201).json(nuevo);
 	} catch (err) {
 		// console.error("Error en controller.create:", err); // Logueo el error para depurar
-		res.status(500).json({ error: "Error al crear negocio" });
+		res.status(500).json({ error: "Error al crear sucursal" });
 	}
 };
 
@@ -31,7 +31,7 @@ exports.delete = async (req, res) => {
 		res.status(204).end();
 	} catch (err) {
 		console.error("Error en controller.delete:", err);
-		res.status(500).json({ error: "Error al eliminar negocio" });
+		res.status(500).json({ error: "Error al eliminar sucursal" });
 	}
 };
 
@@ -42,6 +42,6 @@ exports.update = async (req, res) => {
 		res.status(200).json(actualizado);
 	} catch (err) {
 		console.error("Error en controller.update:", err);
-		res.status(500).json({ error: "Error al actualizar negocio" });
+		res.status(500).json({ error: "Error al actualizar sucursal" });
 	}
 };

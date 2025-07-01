@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/turnos.controller");
 
-// POST /turnos
 router.post("/", controller.create);
 router.get("/", controller.getAll);
 router.put("/:id", controller.update);
 router.delete("/:id", controller.delete);
 
+router.get("/compl", controller.getAllCompl);
 
 module.exports = router;

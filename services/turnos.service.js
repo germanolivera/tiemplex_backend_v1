@@ -4,7 +4,7 @@ const pool = require("../src/config/db");
 exports.create = async (data) => {
 	const sql = sqlLoader.load("turnos", "insertar_turno.sql");
 	const params = [
-		data.id_negocio,
+		data.id_sucursal,
 		data.id_cliente,
 		data.id_empleado,
 		data.id_servicio,
@@ -27,10 +27,17 @@ exports.getAll = async () => {
 	return rows;
 };
 
+exports.getAllCompl = async () => {
+	const sql = sqlLoader.load("turnos", "listar_turnos_compl.sql");
+	const [rows] = await pool.query(sql);
+	console.log(rows);
+	return rows;
+};
+
 exports.update = async (id, data) => {
 	const sql = sqlLoader.load("turnos", "update_turno.sql");
 	const params = [
-		data.id_negocio,
+		data.id_sucursal,
 		data.id_cliente,
 		data.id_empleado,
 		data.id_servicio,

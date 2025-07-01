@@ -1,7 +1,7 @@
 document.getElementById("form-turno").addEventListener("submit", async (e) => {
 	e.preventDefault();
 	const data = {
-		id_negocio: +document.getElementById("id_negocio").value,
+		id_sucursal: +document.getElementById("id_sucursal").value,
 		id_cliente: +document.getElementById("id_cliente").value,
 		id_empleado: +document.getElementById("id_empleado").value,
 		id_servicio: +document.getElementById("id_servicio").value,
